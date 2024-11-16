@@ -13,3 +13,12 @@ def get_stock_data(stock_symbol):
     
     change_percentage = ((price_today - price_yesterday) / price_yesterday) * 100
     return price_today, change_percentage
+# API 
+def get_crypto_data(crypto_symbol):
+    exchange = ccxt.binance()  # Binance
+    ticker = exchange.fetch_ticker(crypto_symbol)
+    
+    price_today = ticker['close']
+    price_yesterday = ticker['open']  # Yesterday's open price
+    change_percentage = ((price_today - price_yesterday) / price_yesterday) * 100
+    return price_today, change_percentage
